@@ -1,7 +1,9 @@
 import path from 'path'
 
 export default {
-  mode: 'spa',
+  target: 'static',
+  ssr: true,
+  // mode: 'spa',
   /*
    ** Headers of the page
    */
