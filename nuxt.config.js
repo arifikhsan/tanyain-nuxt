@@ -1,8 +1,7 @@
 import path from 'path'
 
 export default {
-  // buildDir: 'dist',
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
