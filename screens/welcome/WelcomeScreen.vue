@@ -384,7 +384,7 @@ export default {
   data() {
     return {
       menu: false,
-      groupLink: 'https://t.me/joinchat/Hu0t6BzWXRxxTuq6SGB0AQ'
+      groupLink: 'https://t.me/joinchat/Hu0t6Bv1V2jCv8bfZdP_MA'
     }
   },
   methods: {
