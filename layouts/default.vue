@@ -1,5 +1,11 @@
 <template>
-  <div class="max-w-5xl mx-auto z-0">
+  <div>
     <nuxt />
   </div>
 </template>
+
+<style>
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+</style>
