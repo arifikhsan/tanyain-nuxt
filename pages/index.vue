@@ -1,13 +1,13 @@
 <template>
-  <HomeScreen />
+  <WelcomeScreen />
 </template>
 
 <script>
-import HomeScreen from '~/screens/home/HomeScreen.vue'
+import WelcomeScreen from '~/screens/welcome/WelcomeScreen.vue'
 
 export default {
   components: {
-    HomeScreen
+    WelcomeScreen
   }
 }
 </script>
