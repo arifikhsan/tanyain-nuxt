@@ -1,4 +1,4 @@
-import path from 'path'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -46,6 +46,8 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    // Doc: https://github.com/nuxt-community/apollo-module
+    '@nuxtjs/apollo',
   ],
   /*
    ** Axios module configuration
@@ -66,4 +68,13 @@ export default {
       families: ['Open+Sans&display=swap'],
     },
   },
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.GRAPHQL_URL,
+      },
+    },
+  },
 }
+
+console.log(process.env.GRAPHQL_URL)
