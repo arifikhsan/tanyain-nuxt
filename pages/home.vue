@@ -6,6 +6,7 @@
 import HomeScreen from '~/screens/home/HomeScreen.vue'
 
 export default {
+  layout: 'home',
   components: {
     HomeScreen
   }

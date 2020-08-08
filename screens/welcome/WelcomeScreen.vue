@@ -368,6 +368,9 @@
 
 <script>
 export default {
+  head: {
+    title: 'Temukan jawaban atas pertanyaanmu'
+  },
   data() {
     return {
       menu: false,

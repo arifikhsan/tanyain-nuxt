@@ -5,7 +5,7 @@
   "author": "Arif Ikhsanudin",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt -p 3001",
     "prod": "nuxt generate && nuxt start -p 3001",
     "build": "nuxt build",
     "start": "nuxt start",
