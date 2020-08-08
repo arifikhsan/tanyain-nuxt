@@ -1,6 +1,15 @@
 <template>
   <div>
-    <div>My blog navigation bar here</div>
+    <AppHeader />
     <nuxt />
   </div>
 </template>
+
+<script>
+import AppHeader from '~/layouts/components/AppHeader'
+export default {
+  components: {
+    AppHeader,
+  },
+}
+</script>
