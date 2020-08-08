@@ -13,10 +13,10 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || 'Situs tanya jawab'
-      }
+        content: process.env.npm_package_description || 'Situs tanya jawab',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   /*
    ** Customize the progress-bar color
@@ -25,7 +25,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/css/tailwind.css'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */
@@ -35,7 +35,8 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-webfontloader',
   ],
   /*
    ** Nuxt.js modules
@@ -45,7 +46,6 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    'nuxt-purgecss'
   ],
   /*
    ** Axios module configuration
@@ -59,28 +59,11 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    postcss: {
-      plugins: {
-        'postcss-import': {},
-        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
-        'postcss-nested': {}
-      }
-    },
-    preset: {
-      stage: 1 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
-    },
-
-    extend(config, ctx) {}
-  },
-  purgeCSS: {
-    mode: 'postcss',
-    enabled: process.env.NODE_ENV === 'production'
+    extend(config, ctx) {},
   },
   webfontloader: {
     google: {
-      families: [
-        'Open+Sans&display=swap'
-      ]
-    }
-  }
+      families: ['Open+Sans&display=swap'],
+    },
+  },
 }
