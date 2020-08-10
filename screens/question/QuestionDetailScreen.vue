@@ -8,14 +8,17 @@
     <hr class="my-4" />
     <div class="mt-4 space-y-4">
       <div
-        class="text-gray-800"
+        class="py-4 text-gray-800"
         :key="answer.id"
         v-for="answer in question.answers"
       >
         <p>
           {{ answer.text }}
         </p>
-        <p>Dijawab oleh {{ answer.user.email }}</p>
+        <p class="mt-2">
+          Dijawab oleh
+          <span class="font-semibold">{{ answer.user.email }}</span>
+        </p>
       </div>
     </div>
   </div>
