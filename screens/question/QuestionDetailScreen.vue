@@ -38,11 +38,11 @@ export default {
     const slug = this.$route.params.slug
     const question = await this.$apollo.mutate({
       variables: {
-        id: parseInt(slug),
+        slug,
       },
       mutation: gql`
-        mutation($id: Int!) {
-          question(input: { id: $id }) {
+        mutation($slug: String!) {
+          question(input: { slug: $slug }) {
             question {
               id
               title
@@ -59,7 +59,6 @@ export default {
         }
       `,
     })
-    // .then((data) => console.log(data))
     const result = question.data.question.question
     this.question = result
     console.log(result)

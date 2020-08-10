@@ -2,7 +2,7 @@
   <div class="p-4">
     <div class="space-y-4">
       <nuxt-link
-        :to="{ name: 'slug', params: { slug: question.id } }"
+        :to="{ name: 'slug', params: { slug: question.slug } }"
         v-for="question in allQuestions"
         :key="question.id"
         class="block text-xl font-semibold duration-500 hover:text-blue-500"
@@ -31,6 +31,7 @@ export default {
         allQuestions {
           id
           title
+          slug
         }
       }
     `,
