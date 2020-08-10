@@ -48,6 +48,8 @@ export default {
     '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/apollo-module
     '@nuxtjs/apollo',
+    // Doc: https://auth.nuxtjs.org/guide/setup.html
+    '@nuxtjs/auth',
   ],
   /*
    ** Axios module configuration
@@ -74,6 +76,9 @@ export default {
         httpEndpoint: process.env.GRAPHQL_URL,
       },
     },
+  },
+  auth: {
+
   },
 }
 

@@ -21,6 +21,13 @@
         </p>
       </div>
     </div>
+    <nuxt-link
+      to="/"
+      class="block px-4 py-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
+      v-if="!this.$auth.loggedIn"
+    >
+      Login untuk menjawab
+    </nuxt-link>
   </div>
 </template>
 
@@ -38,8 +45,9 @@ export default {
     }
   },
   async created() {
+    // console.log('is logged in: ', this.$auth.loggedIn)
     const slug = this.$route.params.slug
-    this.$nuxt.$loading.start()
+    // this.$nuxt.$loading.start()
     const question = await this.$apollo.mutate({
       variables: {
         slug,
@@ -66,7 +74,7 @@ export default {
     const result = question.data.question.question
     this.question = result
     // console.log(result)
-    this.$nuxt.$loading.finish()
+    // this.$nuxt.$loading.finish()
   },
 }
 </script>
