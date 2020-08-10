@@ -1,16 +1,31 @@
 <template>
   <div>
     <form @submit.prevent="login">
+      <label class="block">
+        <span class="text-gray-700">Email</span>
+        <input
+          type="email"
+          v-model="credential.email"
+          class="block w-full mt-1 form-input"
+          placeholder="Email"
+        />
+      </label>
+      <label class="block">
+        <span class="text-gray-700">Password</span>
+        <input
+          type="password"
+          v-model="credential.password"
+          class="block w-full mt-1 form-input"
+          placeholder="Password"
+        />
+      </label>
       <div>
-        <label>Email</label>
-        <input type="email" v-model="credential.email" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" v-model="credential.password" />
-      </div>
-      <div>
-        <button type="submit">Submit</button>
+        <button
+          class="block px-4 py-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
+          type="submit"
+        >
+          Login
+        </button>
       </div>
     </form>
   </div>
