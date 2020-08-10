@@ -36,6 +36,7 @@ export default {
   },
   async created() {
     const slug = this.$route.params.slug
+    this.$nuxt.$loading.start()
     const question = await this.$apollo.mutate({
       variables: {
         slug,
@@ -61,7 +62,8 @@ export default {
     })
     const result = question.data.question.question
     this.question = result
-    console.log(result)
+    // console.log(result)
+    this.$nuxt.$loading.finish()
   },
 }
 </script>
