@@ -1,9 +1,22 @@
 <template>
   <div class="p-4">
-    <div class="space-y-4">
+    <div class="">
       <p class="text-3xl font-bold text-gray-800">
         {{ question.title }}
       </p>
+    </div>
+    <hr class="my-4" />
+    <div class="mt-4 space-y-4">
+      <div
+        class="text-gray-800"
+        :key="answer.id"
+        v-for="answer in question.answers"
+      >
+        <p>
+          {{ answer.text }}
+        </p>
+        <p>Dijawab oleh {{ answer.user.email }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +37,7 @@ export default {
   async created() {
     // console.log(this.$route.params.slug)
     const slug = this.$route.params.slug
-    console.log(typeof(slug))
+    console.log(typeof slug)
     const question = await this.$apollo.mutate({
       variables: {
         id: parseInt(slug),
@@ -35,6 +48,14 @@ export default {
             question {
               id
               title
+              answers {
+                id
+                text
+                user {
+                  id
+                  email
+                }
+              }
             }
           }
         }
