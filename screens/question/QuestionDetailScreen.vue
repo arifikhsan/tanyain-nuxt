@@ -35,9 +35,7 @@ export default {
     }
   },
   async created() {
-    // console.log(this.$route.params.slug)
     const slug = this.$route.params.slug
-    console.log(typeof slug)
     const question = await this.$apollo.mutate({
       variables: {
         id: parseInt(slug),
