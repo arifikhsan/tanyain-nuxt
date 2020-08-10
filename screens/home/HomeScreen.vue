@@ -1,13 +1,14 @@
 <template>
   <div class="p-4">
     <div class="space-y-4">
-      <p
+      <nuxt-link
+        :to="{ name: 'slug', params: { slug: question.id } }"
         v-for="question in allQuestions"
         :key="question.id"
-        class="text-xl font-semibold"
+        class="block text-xl font-semibold"
       >
         {{ question.title }}
-      </p>
+      </nuxt-link>
     </div>
   </div>
 </template>
