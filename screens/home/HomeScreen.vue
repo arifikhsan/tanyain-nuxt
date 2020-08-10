@@ -5,7 +5,7 @@
         :to="{ name: 'slug', params: { slug: question.id } }"
         v-for="question in allQuestions"
         :key="question.id"
-        class="block text-xl font-semibold"
+        class="block text-xl font-semibold duration-500 hover:text-blue-500"
       >
         {{ question.title }}
       </nuxt-link>
