@@ -125,7 +125,7 @@ export default {
           `,
         })
         .then(() => {
-          alert('Terkirim')
+          alert('Sukses mengirim jawaban.')
           this.getQuestion()
         })
         .catch(() => alert('Gagal mengirim jawaban.'))
