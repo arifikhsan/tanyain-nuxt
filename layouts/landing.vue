@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppHeader />
-    <div class="max-w-md p-4 mx-auto">
+    <div>
       <nuxt />
     </div>
   </div>

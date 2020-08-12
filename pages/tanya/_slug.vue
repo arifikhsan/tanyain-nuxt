@@ -6,28 +6,54 @@
       </p>
     </div>
     <hr class="my-4" />
-    <div class="mt-4 space-y-4">
-      <div
-        class="py-6 text-gray-800"
-        :key="answer.id"
-        v-for="answer in question.answers"
-      >
-        <p>
-          {{ answer.text }}
-        </p>
-        <p class="mt-4">
-          Dijawab oleh
-          <span class="font-semibold">{{ answer.user.email }}</span>
-        </p>
+    <div class="mt-4">
+      <div class="space-y-6">
+        <!-- todo: add if blank -->
+        <div v-if="false">
+          <p>Belum ada jawaban.</p>
+        </div>
+        <div
+          v-else
+          class="text-gray-800"
+          :key="answer.id"
+          v-for="answer in question.answers"
+        >
+          <p>
+            {{ answer.text }}
+          </p>
+          <p class="mt-3">
+            Dijawab oleh
+            <span class="font-semibold">{{ answer.user.email }}</span>
+          </p>
+        </div>
       </div>
     </div>
-    <div>
+    <div class="py-4">
       <div v-if="this.$auth.loggedIn">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <hr class="my-4" />
+        <form @submit.prevent="sendAnswer">
+          <label class="block">
+            <span class="text-gray-700">Jawaban</span>
+            <textarea
+              v-model="answer"
+              class="block w-full mt-1 form-textarea"
+              rows="3"
+              placeholder="Tulis jawaban disini"
+            ></textarea>
+          </label>
+          <div class="mt-4">
+            <button
+              class="block w-full px-4 py-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
+              type="submit"
+            >
+              Kirim
+            </button>
+          </div>
+        </form>
       </div>
       <div v-else>
         <nuxt-link
-          to="/"
+          to="/login"
           class="block px-4 py-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
         >
           Login untuk menjawab
@@ -48,38 +74,62 @@ export default {
     return {
       question: '',
       slug: '',
+      answer: 'aaa',
     }
   },
   async created() {
-    const slug = this.$route.params.slug
-    // this.$nuxt.$loading.start()
-    const question = await this.$apollo.mutate({
-      variables: {
-        slug,
-      },
-      mutation: gql`
-        mutation($slug: String!) {
-          question(input: { slug: $slug }) {
-            question {
-              id
-              title
-              answers {
+    this.getQuestion()
+  },
+  methods: {
+    async getQuestion() {
+      const slug = this.$route.params.slug
+      const question = await this.$apollo.mutate({
+        variables: {
+          slug,
+        },
+        mutation: gql`
+          mutation($slug: String!) {
+            question(input: { slug: $slug }) {
+              question {
                 id
-                text
-                user {
+                title
+                answers {
                   id
-                  email
+                  text
+                  user {
+                    id
+                    email
+                  }
                 }
               }
             }
           }
-        }
-      `,
-    })
-    const result = question.data.question.question
-    this.question = result
-    // console.log(result)
-    // this.$nuxt.$loading.finish()
+        `,
+      })
+      const result = question.data.question.question
+      this.question = result
+    },
+    async sendAnswer() {
+      this.$apollo
+        .mutate({
+          variables: {
+            questionId: this.question.id,
+            answer: this.answer,
+          },
+          mutation: gql`
+            mutation($questionId: Int!, $answer: String!) {
+              createAnswer(input: { questionId: $questionId, text: $answer }) {
+                message
+              }
+            }
+          `,
+        })
+        .then(() => {
+          alert('Terkirim')
+          this.getQuestion()
+        })
+        .catch(() => alert('Gagal mengirim jawaban.'))
+    },
   },
 }
 </script>

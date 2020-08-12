@@ -45,11 +45,10 @@ export default {
   },
   methods: {
     async login() {
-      await this.$auth.loginWith('local', { data: this.credential })
+      const res = await this.$auth.loginWith('local', { data: this.credential })
+      await this.$apolloHelpers.onLogin(res.data.access_token)
+      // console.log(res.data.access_token)
       if (this.$auth.loggedIn) {
-        this.$store.dispatch('snackbar/setSnackbar', {
-          text: 'Thank you for signing in, ' + this.$auth.user.name,
-        })
         this.$router.push('/home')
       }
     },

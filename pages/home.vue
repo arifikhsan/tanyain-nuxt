@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div>
     <div class="space-y-4">
       <nuxt-link
         :to="{ name: 'tanya-slug', params: { slug: question.slug } }"

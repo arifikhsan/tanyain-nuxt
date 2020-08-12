@@ -1,9 +1,18 @@
 <template>
   <div>
     <div class="flex items-center justify-between w-full p-4 md:w-auto">
-      <nuxt-link class="text-2xl font-bold text-blue-500" to="/">
-        Tanyain
-      </nuxt-link>
+      <div>
+        <nuxt-link
+          v-if="$auth.loggedIn"
+          class="text-2xl font-bold text-blue-500"
+          to="/home"
+        >
+          Tanyain
+        </nuxt-link>
+        <nuxt-link v-else class="text-2xl font-bold text-blue-500" to="/">
+          Tanyain
+        </nuxt-link>
+      </div>
 
       <!-- hamburger -->
       <div class="flex items-center -mr-2 md:hidden">
@@ -35,7 +44,7 @@
           >Tentang
         </a>
         <nuxt-link
-          to="/"
+          to="/home"
           class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
           >Beranda
         </nuxt-link>
@@ -119,6 +128,7 @@ export default {
     },
     async logout() {
       await this.$auth.logout()
+      await this.$apolloHelpers.onLogout()
     },
   },
 }
