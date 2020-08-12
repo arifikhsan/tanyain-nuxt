@@ -8,26 +8,32 @@
     <hr class="my-4" />
     <div class="mt-4 space-y-4">
       <div
-        class="py-4 text-gray-800"
+        class="py-6 text-gray-800"
         :key="answer.id"
         v-for="answer in question.answers"
       >
         <p>
           {{ answer.text }}
         </p>
-        <p class="mt-2">
+        <p class="mt-4">
           Dijawab oleh
           <span class="font-semibold">{{ answer.user.email }}</span>
         </p>
       </div>
     </div>
-    <nuxt-link
-      to="/"
-      class="block px-4 py-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
-      v-if="!this.$auth.loggedIn"
-    >
-      Login untuk menjawab
-    </nuxt-link>
+    <div>
+      <div v-if="this.$auth.loggedIn">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+      </div>
+      <div v-else>
+        <nuxt-link
+          to="/"
+          class="block px-4 py-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
+        >
+          Login untuk menjawab
+        </nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,7 +51,6 @@ export default {
     }
   },
   async created() {
-    // console.log('is logged in: ', this.$auth.loggedIn)
     const slug = this.$route.params.slug
     // this.$nuxt.$loading.start()
     const question = await this.$apollo.mutate({

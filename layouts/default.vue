@@ -1,11 +1,15 @@
 <template>
   <div>
+    <AppHeader />
     <nuxt />
   </div>
 </template>
 
 <script>
+import AppHeader from '~/layouts/components/AppHeader'
 export default {
-  name: 'Default',
+  components: {
+    AppHeader,
+  },
 }
 </script>

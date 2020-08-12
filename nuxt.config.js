@@ -55,7 +55,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: process.env.REST_URL, // Used as fallback if no runtime config is provided
+  },
   /*
    ** Build configuration
    */
@@ -77,9 +79,22 @@ export default {
       },
     },
   },
+  server: {
+    port: 3001
+  },
   auth: {
-
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'access_token' },
+          logout: { url: 'logout', method: 'delete' },
+          user: { url: 'user', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        tokenType: 'Bearer',
+        // globalToken: true,
+        // autoFetchUser: true
+      }
+    }
   },
 }
-
-console.log(process.env.GRAPHQL_URL)

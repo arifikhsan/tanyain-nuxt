@@ -1,9 +1,11 @@
 <template>
   <div>
     <div class="flex items-center justify-between w-full p-4 md:w-auto">
-      <nuxt-link to="/home">
-        <h1 class="text-2xl font-bold text-blue-500">Tanyain</h1>
+      <nuxt-link class="text-2xl font-bold text-blue-500" to="/">
+        Tanyain
       </nuxt-link>
+
+      <!-- hamburger -->
       <div class="flex items-center -mr-2 md:hidden">
         <button
           @click="toggleNav"
@@ -25,17 +27,33 @@
           </svg>
         </button>
       </div>
+
+      <div class="hidden md:block md:ml-10 md:pr-4">
+        <a
+          href="#"
+          class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
+          >Tentang
+        </a>
+        <nuxt-link
+          to="/"
+          class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
+          >Beranda
+        </nuxt-link>
+      </div>
     </div>
     <div
       v-show="menu"
-      class="absolute inset-x-0 top-0 p-2 transition origin-top-right transform"
+      class="absolute inset-x-0 top-0 transition origin-top-right transform"
     >
       <div class="rounded-lg shadow-md">
         <div class="overflow-hidden bg-white rounded-lg shadow-xs">
-          <div class="flex items-center justify-between px-5 pt-4">
-            <div>
-              <h1 class="text-2xl font-bold text-blue-500">Tanyain</h1>
+          <div class="flex items-center justify-between p-4">
+            <div class="text-2xl font-bold text-blue-500">
+              <p v-if="$auth.loggedIn">Halo, {{ $auth.user.name }}</p>
+              <nuxt-link to="/" v-else>Tanyain</nuxt-link>
             </div>
+
+            <!-- close -->
             <div class="-mr-2">
               <button
                 @click="toggleNav"
@@ -59,29 +77,28 @@
             </div>
           </div>
           <div class="px-2 pt-2 pb-3">
-            <a
-              href="#"
-              class="block px-3 py-2 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
-              >Barang
-            </a>
-            <a
-              href="#"
+            <nuxt-link
+              to="/home"
               class="block px-3 py-2 mt-1 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
-              >Jasa
-            </a>
-            <a
-              href="#"
-              class="block px-3 py-2 mt-1 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
-              >Tentang
-            </a>
+            >
+              Beranda
+            </nuxt-link>
           </div>
           <div>
-            <a
-              href="#"
+            <button
+              v-if="$auth.loggedIn"
+              @click="logout"
+              class="block w-full px-5 py-3 font-medium text-center text-blue-500 transition duration-150 ease-in-out bg-gray-50 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:bg-gray-100 focus:text-blue-700"
+            >
+              Logout
+            </button>
+            <nuxt-link
+              v-else
+              to="/login"
               class="block w-full px-5 py-3 font-medium text-center text-blue-500 transition duration-150 ease-in-out bg-gray-50 hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:bg-gray-100 focus:text-blue-700"
             >
               Login
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -99,6 +116,9 @@ export default {
   methods: {
     toggleNav: function () {
       this.menu = !this.menu
+    },
+    async logout() {
+      await this.$auth.logout()
     },
   },
 }
