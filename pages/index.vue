@@ -12,7 +12,7 @@
             <h2
               class="text-4xl font-bold text-blue-500 sm:text-5xl sm:leading-none md:text-6xl"
             >
-              Temukan jawaban atas pertanyaanmu
+              Temukan jawaban dari pertanyaamu, meskipun jawabannya aneh aneh...
             </h2>
             <div
               class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start"
@@ -50,14 +50,12 @@
               <h3
                 class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
               >
-                Tempat untuk berbagi
+                Tempat untuk tanya jawab
               </h3>
               <p
                 class="max-w-2xl mt-4 text-xl leading-7 text-gray-500 lg:mx-auto"
               >
-                Tidak ada yang gratis. Pernyataan tersebut benar adanya, namun
-                masih ada kemungkinan kalau ada sesuatu yang benar benar gratis
-                di dunia ini.
+                Ajukan pertanyaan apapun. Dapatkan jawabannya dari siapapun.
               </p>
             </div>
 
