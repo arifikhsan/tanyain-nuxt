@@ -80,7 +80,7 @@ export default {
     },
   },
   server: {
-    port: 3001,
+    port: 8000,
   },
   auth: {
     strategies: {
