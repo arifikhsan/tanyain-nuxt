@@ -27,7 +27,13 @@ jobs:
     - name: Download dependencies
       run: yarn
 
-    # - run: yarn build
+    - name: Generate Single Page Application
+      env:
+        GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
+        REST_URL: ${{ secrets.REST_URL }}
+        BASE_URL: ${{ secrets.BASE_URL }}
+      run: yarn build
+
     - name: Generate static site
       env:
         GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
