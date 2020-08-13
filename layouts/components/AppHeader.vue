@@ -38,27 +38,37 @@
       </div>
 
       <div class="hidden md:block md:ml-10 md:pr-4">
-        <nuxt-link
-          to="/tanya"
-          class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
-          >Buat Pertanyaan
-        </nuxt-link>
-        <nuxt-link
-          to="/pertanyaanku"
-          class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
-          >Pertanyaanku
-        </nuxt-link>
-        <nuxt-link
-          to="/jawabanku"
-          class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
-          >Jawabanku
-        </nuxt-link>
-        <button
-          to="/jawabanku"
-          class="ml-8 font-medium text-blue-500 transition duration-150 ease-in-out bg-gray-50 focus:text-blue-700 hover:text-gray-900 focus:outline-none"
-        >
-          Logout
-        </button>
+        <div v-if="$auth.loggedIn">
+          <nuxt-link
+            to="/tanya"
+            class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
+            >Buat Pertanyaan
+          </nuxt-link>
+          <nuxt-link
+            to="/pertanyaanku"
+            class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
+            >Pertanyaanku
+          </nuxt-link>
+          <nuxt-link
+            to="/jawabanku"
+            class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
+            >Jawabanku
+          </nuxt-link>
+          <button
+            @click="logout"
+            class="ml-8 font-medium text-blue-500 transition duration-150 ease-in-out bg-gray-50 focus:text-blue-700 hover:text-gray-900 focus:outline-none"
+          >
+            Logout
+          </button>
+        </div>
+        <div v-else>
+          <nuxt-link
+            to="/login"
+            class="ml-8 font-medium text-blue-500 transition duration-150 ease-in-out bg-gray-50 focus:text-blue-700 hover:text-gray-900 focus:outline-none"
+          >
+            Login
+          </nuxt-link>
+        </div>
       </div>
     </div>
     <div

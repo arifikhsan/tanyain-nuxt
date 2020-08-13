@@ -4,7 +4,7 @@
       <h1 class="text-2xl font-bold text-gray-800">Jawabanku</h1>
     </div>
     <div class="mt-4 space-y-4 text-gray-800">
-      <div v-for="answer in allAnswers" :key="answer.id">
+      <div v-for="answer in myAnswers" :key="answer.id">
         <div>
           <nuxt-link
             :to="{ name: 'tanya-slug', params: { slug: answer.question.slug } }"
@@ -41,13 +41,13 @@ export default {
   },
   data() {
     return {
-      allAnswers: '',
+      myAnswers: '',
     }
   },
   apollo: {
-    allAnswers: gql`
+    myAnswers: gql`
       query {
-        allAnswers {
+        myAnswers {
           id
           text
           user {
