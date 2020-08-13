@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="flex items-center justify-between max-w-4xl p-4 md:mx-auto">
-      <div>
+    <div class="flex items-center justify-between max-w-5xl p-4 md:mx-auto">
+      <div class="pl-4">
         <nuxt-link
           v-if="$auth.loggedIn"
           class="text-2xl font-bold text-blue-500"
