@@ -39,14 +39,14 @@
 
       <div class="hidden md:block md:ml-10 md:pr-4">
         <a
-          href="#"
+          href="/tanya"
           class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
-          >Tentang
+          >Buat Pertanyaan
         </a>
         <nuxt-link
-          to="/home"
+          to="/pertanyaanku"
           class="ml-8 font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
-          >Beranda
+          >Pertanyaanku
         </nuxt-link>
       </div>
     </div>
@@ -92,20 +92,20 @@
             >
               Beranda
             </nuxt-link>
-            <nuxt-link
-              v-if="$auth.loggedIn"
-              to="/tanya"
-              class="block px-3 py-2 mt-1 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
-            >
-              Buat Pertanyaan
-            </nuxt-link>
-            <nuxt-link
-              v-else
-              to="/login"
-              class="block px-3 py-2 mt-1 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
-            >
-              Buat Pertanyaan
-            </nuxt-link>
+            <div v-if="$auth.loggedIn">
+              <nuxt-link
+                to="/tanya"
+                class="block px-3 py-2 mt-1 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
+              >
+                Buat Pertanyaan
+              </nuxt-link>
+              <nuxt-link
+                to="/pertanyaanku"
+                class="block px-3 py-2 mt-1 text-base font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
+              >
+                Pertanyaanku
+              </nuxt-link>
+            </div>
           </div>
           <div>
             <button

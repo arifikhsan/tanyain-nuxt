@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="space-y-4">
+    <div class="py-4">
+      <h1 class="text-2xl font-bold text-gray-800">Terbaru</h1>
+    </div>
+    <div class="mt-4 space-y-4 text-gray-800">
       <nuxt-link
         :to="{ name: 'tanya-slug', params: { slug: question.slug } }"
         v-for="question in allQuestions"
