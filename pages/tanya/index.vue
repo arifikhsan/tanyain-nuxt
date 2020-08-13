@@ -20,6 +20,14 @@
           Kirim
         </button>
       </div>
+      <div v-if="done">
+        <nuxt-link
+          class="block w-full px-4 py-2 mt-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
+          :to="{ name: 'tanya-slug', params: { slug: slug } }"
+        >
+          <a>Lihat pertanyaan</a>
+        </nuxt-link>
+      </div>
     </form>
   </div>
 </template>
@@ -34,6 +42,8 @@ export default {
   data() {
     return {
       question: '',
+      done: false,
+      slug: '',
     }
   },
   methods: {
@@ -47,11 +57,16 @@ export default {
             mutation($question: String!) {
               createQuestion(input: { title: $question }) {
                 message
+                slug
               }
             }
           `,
         })
-        .then(() => alert('Sukses mengirim pertanyaan.'))
+        .then((res) => {
+          alert('Sukses mengirim pertanyaan.')
+          this.slug = res.data.createQuestion.slug
+          this.done = true
+        })
         .catch(() => alert('Gagal mengirim pertanyaan.'))
     },
   },
