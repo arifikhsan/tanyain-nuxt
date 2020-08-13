@@ -1,15 +1,15 @@
 <template>
   <div>
-    <form @submit.prevent="updateQuestion">
+    <form @submit.prevent="updateAnswer">
       <div class="py-4">
-        <h1 class="text-2xl font-bold text-gray-800">Edit pertanyaan</h1>
+        <h1 class="text-2xl font-bold text-gray-800">Edit jawaban</h1>
       </div>
       <label class="block">
         <textarea
-          v-model="question.title"
+          v-model="answer.text"
           class="block w-full mt-1 form-textarea"
           rows="3"
-          placeholder="Tulis pertanyaan disini"
+          placeholder="Tulis jawaban disini"
         ></textarea>
       </label>
       <div class="mt-4">
@@ -23,9 +23,9 @@
       <div v-if="done">
         <nuxt-link
           class="block w-full px-4 py-2 mt-2 text-center text-white duration-500 bg-blue-500 rounded-md hover:bg-blue-600"
-          :to="{ name: 'tanya-slug', params: { slug: newslug } }"
+          :to="{ name: 'tanya-slug', params: { slug: answer.question.slug } }"
         >
-          <a>Lihat pertanyaan</a>
+          <a>Lihat jawaban</a>
         </nuxt-link>
       </div>
     </form>
@@ -37,61 +37,63 @@ import gql from 'graphql-tag'
 
 export default {
   head: {
-    title: 'Edit pertanyaan',
+    title: 'Edit Jawaban',
   },
   data() {
     return {
-      question: '',
+      answer: '',
       done: false,
-      newslug: ''
     }
   },
   created() {
-    this.getQuestion()
+    this.getAnswer()
   },
   methods: {
-    async getQuestion() {
-      const slug = this.$route.params.slug
-      const question = await this.$apollo.mutate({
+    async getAnswer() {
+      const id = this.$route.params.id
+      const answer = await this.$apollo.mutate({
         variables: {
-          slug,
+          id,
         },
         mutation: gql`
-          mutation($slug: String!) {
-            question(input: { slug: $slug }) {
-              question {
+          mutation($id: Int!) {
+            getAnswer(input: { id: $id }) {
+              answer {
                 id
-                title
+                text
+                question {
+                  id
+                  title
+                  slug
+                }
               }
             }
           }
         `,
       })
-      const result = question.data.question.question
-      this.question = result
+      const result = answer.data.getAnswer.answer
+      this.answer = result
     },
-    updateQuestion() {
+    updateAnswer() {
       this.$apollo
         .mutate({
           variables: {
-            slug: this.$route.params.slug,
-            title: this.question.title,
+            id: this.$route.params.id,
+            text: this.answer.text,
           },
           mutation: gql`
-            mutation($slug: String!, $title: String!) {
-              updateQuestion(input: { slug: $slug, title: $title }) {
+            mutation($id: Int!, $text: String!) {
+              updateAnswer(input: { id: $id, text: $text }) {
                 message
-                slug
               }
             }
           `,
         })
-        .then((res) => {
-          alert('Sukses mengupdate pertanyaan.')
-          this.newslug = res.data.updateQuestion.slug
+        .then(() => {
+          alert('Sukses mengupdate jawaban.')
           this.done = true
         })
-        .catch(() => alert('Gagal mengupdate pertanyaan.'))
+        .catch(() => alert('Gagal mengupdate jawaban.'))
     },
   },
 }

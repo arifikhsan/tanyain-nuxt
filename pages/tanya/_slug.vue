@@ -74,7 +74,7 @@ export default {
     return {
       question: '',
       slug: '',
-      answer: 'aaa',
+      answer: '',
     }
   },
   async created() {

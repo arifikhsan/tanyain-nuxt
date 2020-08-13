@@ -50,9 +50,9 @@ export default {
   data() {
     return {
       credential: {
-        name: 'a',
-        email: 'c@a.a',
-        password: '123456',
+        name: '',
+        email: '',
+        password: '',
       },
     }
   },

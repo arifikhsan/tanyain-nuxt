@@ -1,8 +1,10 @@
 <template>
   <div>
     <form @submit.prevent="sendQuestion">
+      <div class="py-4">
+        <h1 class="text-2xl font-bold text-gray-800">Buat pertanyaan baru</h1>
+      </div>
       <label class="block">
-        <span class="text-gray-700">Buat pertanyaan baru</span>
         <textarea
           v-model="question"
           class="block w-full mt-1 form-textarea"
@@ -31,7 +33,7 @@ export default {
   },
   data() {
     return {
-      question: 'aaaa',
+      question: '',
     }
   },
   methods: {
