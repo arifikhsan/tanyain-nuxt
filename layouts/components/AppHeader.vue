@@ -160,6 +160,7 @@
 
 <script>
 export default {
+  name: 'app-header',
   data() {
     return {
       menu: false,

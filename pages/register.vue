@@ -47,6 +47,10 @@
 
 <script>
 export default {
+  head: {
+    title: 'Register',
+  },
+  auth: 'guest',
   data() {
     return {
       credential: {

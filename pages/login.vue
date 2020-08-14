@@ -38,6 +38,10 @@
 
 <script>
 export default {
+  head: {
+    title: 'Login',
+  },
+  auth: 'guest',
   data() {
     return {
       credential: {
@@ -48,8 +52,15 @@ export default {
   },
   methods: {
     async login() {
-      const res = await this.$auth.loginWith('local', { data: this.credential })
-      await this.$apolloHelpers.onLogin(res.data.access_token)
+      await this.$auth
+        .loginWith('local', { data: this.credential })
+        .then((res) => {
+          this.$apolloHelpers.onLogin(res.data.access_token)
+          alert('Login sukses')
+        })
+        .catch((err) => {
+          alert(err.response.data.message)
+        })
       if (this.$auth.loggedIn) {
         this.$router.push('/home')
       }

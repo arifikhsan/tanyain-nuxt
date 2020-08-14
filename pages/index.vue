@@ -232,6 +232,7 @@
 
 <script>
 export default {
+  name: 'landing',
   layout: 'landing',
   head: {
     title: 'Temukan jawaban atas pertanyaanmu',
