@@ -12,7 +12,7 @@
             <h2
               class="text-4xl font-bold text-blue-500 sm:text-5xl sm:leading-none md:text-6xl"
             >
-              Temukan jawaban dari pertanyaamu, meskipun jawabannya aneh aneh...
+              Temukan jawaban dari pertanyaamu.
             </h2>
             <div
               class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start"

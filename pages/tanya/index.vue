@@ -39,6 +39,7 @@ export default {
   head: {
     title: 'Buat pertanyaan baru',
   },
+  middleware: 'auth',
   data() {
     return {
       question: '',

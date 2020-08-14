@@ -39,6 +39,7 @@ export default {
   head: {
     title: 'Edit Jawaban',
   },
+  middleware: 'auth',
   data() {
     return {
       answer: '',
