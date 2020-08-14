@@ -1,6 +1,8 @@
-# tanyain-nuxt
+# Tanyain Frontend
 
-> My slick Nuxt.js project
+> Situs tanya jawab
+
+Dibuat untuk menyediakan tempat untuk bertanya jawab. Seperti Quora.
 
 ## Build Setup
 
@@ -21,8 +23,3 @@ $ yarn generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
-## Todos
-
-login
-register
-post answer

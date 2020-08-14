@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="sendQuestion">
       <div class="py-4">
-        <h1 class="text-2xl font-bold text-gray-800">Buat pertanyaan baru</h1>
+        <h1 class="text-2xl font-semibold text-gray-700">Buat pertanyaan baru</h1>
       </div>
       <label class="block">
         <textarea

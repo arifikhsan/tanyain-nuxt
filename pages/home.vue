@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="py-4">
-      <h1 class="text-2xl font-bold text-gray-800">Terbaru</h1>
+      <h1 class="text-2xl font-semibold text-gray-700">Terbaru</h1>
     </div>
     <div class="mt-4 space-y-6 text-gray-800">
       <nuxt-link

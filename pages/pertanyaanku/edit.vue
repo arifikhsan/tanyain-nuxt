@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="updateQuestion">
       <div class="py-4">
-        <h1 class="text-2xl font-bold text-gray-800">Edit pertanyaan</h1>
+        <h1 class="text-2xl font-semibold text-gray-700">Edit pertanyaan</h1>
       </div>
       <label class="block">
         <textarea

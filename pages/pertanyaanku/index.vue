@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="py-4">
-      <h1 class="text-2xl font-bold text-gray-800">Pertanyaanku</h1>
+      <h1 class="text-2xl font-semibold text-gray-700">Pertanyaanku</h1>
     </div>
     <div class="mt-4 space-y-4 text-gray-800">
       <div v-for="question in myQuestions" :key="question.id">

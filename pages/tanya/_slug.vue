@@ -1,19 +1,16 @@
 <template>
-  <div class="p-4">
-    <div class="">
-      <p class="text-3xl font-bold text-gray-800">
+  <div>
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800">
         {{ question.title }}
-      </p>
+      </h1>
     </div>
-    <hr class="my-4" />
     <div class="mt-4">
+      <div class="py-8">
+        <p class="text-2xl font-semibold text-gray-700">Jawaban</p>
+      </div>
       <div class="space-y-6">
-        <!-- todo: add if blank -->
-        <div v-if="false">
-          <p>Belum ada jawaban.</p>
-        </div>
         <div
-          v-else
           class="text-gray-800"
           :key="answer.id"
           v-for="answer in question.answers"
@@ -21,24 +18,25 @@
           <p>
             {{ answer.text }}
           </p>
-          <p class="mt-3">
+          <p class="mt-3 text-sm">
             Dijawab oleh
-            <span class="font-semibold">{{ answer.user.email }}</span>
+            <span class="font-semibold">{{ answer.user.name }}</span>
           </p>
         </div>
       </div>
     </div>
     <div class="py-4">
       <div v-if="this.$auth.loggedIn">
-        <hr class="my-4" />
         <form @submit.prevent="sendAnswer">
+          <div class="py-8">
+            <p class="text-2xl font-semibold text-gray-700">Tulis jawabanmu disini</p>
+          </div>
           <label class="block">
-            <span class="text-gray-700">Jawaban</span>
             <textarea
               v-model="answer"
               class="block w-full mt-1 form-textarea"
               rows="3"
-              placeholder="Tulis jawaban disini"
+              placeholder="Sertakan pendapat atau sumber"
             ></textarea>
           </label>
           <div class="mt-4">
@@ -98,6 +96,7 @@ export default {
                   text
                   user {
                     id
+                    name
                     email
                   }
                 }
