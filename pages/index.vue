@@ -235,7 +235,7 @@ export default {
   name: 'landing',
   layout: 'landing',
   head: {
-    title: 'Temukan jawaban atas pertanyaanmu',
+    title: 'Temukan jawaban dari pertanyaanmu',
   },
   data() {
     return {

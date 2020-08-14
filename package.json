@@ -1,7 +1,7 @@
 {
   "name": "tanyain-nuxt",
   "version": "1.0.0",
-  "description": "My slick Nuxt.js project",
+  "description": "Situs tanya jawab",
   "author": "Arif Ikhsanudin",
   "private": true,
   "scripts": {
