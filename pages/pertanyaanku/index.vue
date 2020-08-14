@@ -4,7 +4,7 @@
       <h1 class="text-2xl font-bold text-gray-800">Pertanyaanku</h1>
     </div>
     <div class="mt-4 space-y-4 text-gray-800">
-      <div v-for="question in questions" :key="question.id">
+      <div v-for="question in myQuestions" :key="question.id">
         <div>
           <nuxt-link
             :to="{ name: 'tanya-slug', params: { slug: question.slug } }"
@@ -42,29 +42,21 @@ export default {
   middleware: 'auth',
   data() {
     return {
-      questions: '',
+      myQuestions: '',
     }
   },
-  created() {
-    this.getQuestions()
+  apollo: {
+    myQuestions: gql`
+      query {
+        myQuestions {
+          id
+          title
+          slug
+        }
+      }
+    `,
   },
   methods: {
-    async getQuestions() {
-      const res = await this.$apollo.mutate({
-        mutation: gql`
-          mutation {
-            filterQuestions(input: {}) {
-              questions {
-                id
-                title
-                slug
-              }
-            }
-          }
-        `,
-      })
-      this.questions = res.data.filterQuestions.questions
-    },
     async deleteQuestion(slug) {
       await this.$apollo
         .mutate({
@@ -81,7 +73,6 @@ export default {
         })
         .then(() => alert('Pertanyaan telah dihapus.'))
         .catch(() => alert('Pertanyaan gagal dihapus'))
-        .finally(() => this.getQuestions())
     },
   },
 }
