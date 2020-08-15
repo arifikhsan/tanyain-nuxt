@@ -129,6 +129,7 @@ export default {
           this.$toast.success('Sukses mengirim jawaban.', {
             duration: 6000,
           })
+          this.answer = ''
           this.getQuestion()
         })
         .catch(() => {

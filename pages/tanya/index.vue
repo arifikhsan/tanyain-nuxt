@@ -71,6 +71,7 @@ export default {
           })
           this.slug = res.data.createQuestion.slug
           this.done = true
+          this.question = ''
         })
         .catch(() => {
           this.$toast.error('Gagal mengirim pertanyaan.', {
