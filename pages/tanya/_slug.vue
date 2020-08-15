@@ -18,7 +18,7 @@
           <p>
             {{ answer.text }}
           </p>
-          <p class="mt-3 text-sm">
+          <p class="mt-3 text-sm text-right">
             Dijawab oleh
             <span class="font-semibold">{{ answer.user.name }}</span>
           </p>
@@ -39,6 +39,7 @@
               class="block w-full mt-1 form-textarea"
               rows="3"
               placeholder="Sertakan pendapat atau sumber"
+              required
             ></textarea>
           </label>
           <div class="mt-4">

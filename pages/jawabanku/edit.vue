@@ -10,6 +10,7 @@
           class="block w-full mt-1 form-textarea"
           rows="3"
           placeholder="Tulis jawaban disini"
+          required
         ></textarea>
       </label>
       <div class="mt-4">
