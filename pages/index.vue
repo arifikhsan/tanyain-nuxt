@@ -243,8 +243,11 @@ export default {
       groupLink: 'https://t.me/joinchat/Hu0t6Bv1V2jCv8bfZdP_MA',
     }
   },
+  mounted() {
+    this.$axios.get('wakeup')
+  },
   methods: {
-    toggleNav: function () {
+    toggleNav() {
       this.menu = !this.menu
     },
   },
