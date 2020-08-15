@@ -55,6 +55,7 @@ export default {
     '@nuxtjs/apollo',
     // Doc: https://auth.nuxtjs.org/guide/setup.html
     '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
   /*
    ** Axios module configuration

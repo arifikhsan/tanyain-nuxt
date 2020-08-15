@@ -71,8 +71,16 @@ export default {
             }
           `,
         })
-        .then(() => alert('Pertanyaan telah dihapus.'))
-        .catch(() => alert('Pertanyaan gagal dihapus'))
+        .then(() => {
+          this.$toast.success('Pertanyaan telah dihapus.', {
+            duration: 6000,
+          })
+        })
+        .catch(() => {
+          this.$toast.error('Pertanyaan gagal dihapus', {
+            duration: 6000,
+          })
+        })
     },
   },
 }

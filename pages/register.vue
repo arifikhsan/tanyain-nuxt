@@ -65,10 +65,16 @@ export default {
       await this.$axios
         .post('/register', this.credential)
         .then((res) => {
-          alert('Berhasil mendaftar. Silahkan login')
+          this.$toast.success('Berhasil mendaftar. Silahkan login', {
+            duration: 6000,
+          })
           this.$router.push('/login')
         })
-        .catch((err) => alert(err.response.data.message))
+        .catch((err) => {
+          this.$toast.error(err.response.data.message, {
+            duration: 6000,
+          })
+        })
     },
   },
 }

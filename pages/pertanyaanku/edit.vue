@@ -44,7 +44,7 @@ export default {
     return {
       question: '',
       done: false,
-      newslug: ''
+      newslug: '',
     }
   },
   created() {
@@ -88,11 +88,17 @@ export default {
           `,
         })
         .then((res) => {
-          alert('Sukses mengupdate pertanyaan.')
+          this.$toast.success('Sukses mengupdate pertanyaan.', {
+            duration: 6000,
+          })
           this.newslug = res.data.updateQuestion.slug
           this.done = true
         })
-        .catch(() => alert('Gagal mengupdate pertanyaan.'))
+        .catch(() => {
+          this.$toast.error('Gagal mengupdate pertanyaan.', {
+            duration: 6000,
+          })
+        })
     },
   },
 }

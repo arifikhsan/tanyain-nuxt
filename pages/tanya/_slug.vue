@@ -29,7 +29,9 @@
       <div v-if="this.$auth.loggedIn">
         <form @submit.prevent="sendAnswer">
           <div class="py-8">
-            <p class="text-2xl font-semibold text-gray-700">Tulis jawabanmu disini</p>
+            <p class="text-2xl font-semibold text-gray-700">
+              Tulis jawabanmu disini
+            </p>
           </div>
           <label class="block">
             <textarea
@@ -124,10 +126,16 @@ export default {
           `,
         })
         .then(() => {
-          alert('Sukses mengirim jawaban.')
+          this.$toast.success('Sukses mengirim jawaban.', {
+            duration: 6000,
+          })
           this.getQuestion()
         })
-        .catch(() => alert('Gagal mengirim jawaban.'))
+        .catch(() => {
+          this.$toast.error('Gagal mengirim jawaban.', {
+            duration: 6000,
+          })
+        })
     },
   },
 }

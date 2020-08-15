@@ -91,10 +91,16 @@ export default {
           `,
         })
         .then(() => {
-          alert('Sukses mengupdate jawaban.')
+          this.$toast.success('Sukses mengupdate jawaban.', {
+            duration: 6000,
+          })
           this.done = true
         })
-        .catch(() => alert('Gagal mengupdate jawaban.'))
+        .catch(() => {
+          this.$toast.error('Gagal mengupdate jawaban.', {
+            duration: 6000,
+          })
+        })
     },
   },
 }

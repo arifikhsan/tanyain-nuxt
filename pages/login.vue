@@ -56,10 +56,10 @@ export default {
         .loginWith('local', { data: this.credential })
         .then((res) => {
           this.$apolloHelpers.onLogin(res.data.access_token)
-          alert('Login sukses')
+          this.$toast.success('Login sukses', { duration: 6000 })
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          this.$toast.error(err.response.data.message, { duration: 6000 })
         })
       if (this.$auth.loggedIn) {
         this.$router.push('/home')

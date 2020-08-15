@@ -2,7 +2,9 @@
   <div>
     <form @submit.prevent="sendQuestion">
       <div class="py-4">
-        <h1 class="text-2xl font-semibold text-gray-700">Buat pertanyaan baru</h1>
+        <h1 class="text-2xl font-semibold text-gray-700">
+          Buat pertanyaan baru
+        </h1>
       </div>
       <label class="block">
         <textarea
@@ -64,11 +66,17 @@ export default {
           `,
         })
         .then((res) => {
-          alert('Sukses mengirim pertanyaan.')
+          this.$toast.success('Sukses mengirim pertanyaan.', {
+            duration: 6000,
+          })
           this.slug = res.data.createQuestion.slug
           this.done = true
         })
-        .catch(() => alert('Gagal mengirim pertanyaan.'))
+        .catch(() => {
+          this.$toast.error('Gagal mengirim pertanyaan.', {
+            duration: 6000,
+          })
+        })
     },
   },
 }
